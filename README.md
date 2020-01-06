@@ -31,7 +31,7 @@ If you prefer to use config files, read the dehydrated documentation and adjust 
 
 ```shell
 cd /etc/dehydrated/hooks/
-git clone https://github.com/BCurrell/dehydrated-dns-cloudflare dns-cloudflare
+git clone https://github.com/BCurrell/dehydrated-dns-cloudflare.git dns-cloudflare
 cd dns-cloudflare
 pipenv install
 cp .env.sample .env
