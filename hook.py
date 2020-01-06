@@ -57,7 +57,7 @@ def dns_verify(name, content):
     resolver = Resolver()
 
     if content is not None:
-        content = "\"{}\"".format(content)
+        content = f"\"{content}\""
 
     for retry in range(retries):
         sleep(10)

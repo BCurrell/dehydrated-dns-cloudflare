@@ -12,7 +12,7 @@ You're welcome to use one of the existing (recommended) hooks, or you're welcome
 ## Requirements
 
 - dehydrated
-- python3
+- python (3.6 or higher)
 - pipenv
 
 For the purposes of this "documentation", I'm assuming you already have these installed, or know how to install them.
