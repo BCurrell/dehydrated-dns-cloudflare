@@ -106,7 +106,7 @@ def remove_record(zone, name, content):
 
 def deploy_challenge(*args):
     name = prefix + args[0]
-    content = args[1]
+    content = args[2]
 
     zone, fld, subdomain = get_zone_id(name)
 
@@ -117,7 +117,7 @@ def deploy_challenge(*args):
 
 def clean_challenge(*args):
     name = prefix + args[0]
-    content = args[1]
+    content = args[2]
 
     zone, fld, subdomain = get_zone_id(name)
 
