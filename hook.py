@@ -119,7 +119,7 @@ def cli_main():
 @click.argument("domain")
 @click.argument("token-file")
 @click.argument("token")
-def deploy_challenge(domain, token_file=None, token=None):
+def deploy_challenge(domain, token_file, token):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
@@ -131,7 +131,7 @@ def deploy_challenge(domain, token_file=None, token=None):
 @click.argument("domain")
 @click.argument("token-file")
 @click.argument("token")
-def clean_challenge(domain, token_file=None, token=None):
+def clean_challenge(domain, token_file, token):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
