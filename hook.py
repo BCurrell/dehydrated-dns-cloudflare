@@ -8,7 +8,7 @@ import click
 import dns
 from CloudFlare import CloudFlare
 from CloudFlare.exceptions import CloudFlareAPIError
-from dns.resolver import Resolver, NXDOMAIN
+from dns.resolver import NoAnswer, Resolver, NXDOMAIN
 from dns.exception import DNSException
 from dotenv import load_dotenv
 from time import sleep
@@ -44,8 +44,10 @@ def _get_zone_id(domain: str):
 def _dns_lookup(name: str):
 
     try:
-        yield from [str(record) for record in resolver.resolve(name, rdtype=dns.rdatatype.TXT)]
-    except NXDOMAIN:
+        yield from [
+            str(record) for record in resolver.resolve(name, rdtype=dns.rdatatype.TXT)
+        ]
+    except (NXDOMAIN, NoAnswer):
         yield None
     except DNSException as e:
         # TODO: Fail with grace
