@@ -2,6 +2,8 @@
 
 """
 """
+from typing import Union
+
 import click
 from CloudFlare import CloudFlare
 from CloudFlare.exceptions import CloudFlareAPIError
@@ -16,9 +18,10 @@ load_dotenv()
 
 prefix = "_acme-challenge."
 cloudflare = CloudFlare()
+resolver = Resolver()
 
 
-def _get_zone_id(domain):
+def _get_zone_id(domain: str):
     tld, domain, subdomain = parse_tld(domain, fix_protocol=True)
 
     if domain is None:
@@ -37,12 +40,10 @@ def _get_zone_id(domain):
     return zone["id"], fld, subdomain
 
 
-def _dns_lookup(name, resolver=None):
-    if resolver is None:
-        resolver = Resolver()
+def _dns_lookup(name: str):
 
     try:
-        yield from [str(record) for record in resolver.query(name, "TXT")]
+        yield from [str(record) for record in resolver.resolve(name, "TXT")]
     except NXDOMAIN:
         yield None
     except DNSException as e:
@@ -51,9 +52,8 @@ def _dns_lookup(name, resolver=None):
         exit(1)
 
 
-def _dns_verify(name, content):
+def _dns_verify(name: str, content: Union[str, None]):
     retries = 3
-    resolver = Resolver()
 
     if content is not None:
         content = f'"{content}"'
@@ -61,7 +61,7 @@ def _dns_verify(name, content):
     for retry in range(retries):
         sleep(10)
 
-        result = _dns_lookup(name, resolver)
+        result = _dns_lookup(name)
 
         if content in result:
             return True
@@ -119,7 +119,7 @@ def cli_main():
 @click.argument("domain")
 @click.argument("token-file")
 @click.argument("token")
-def deploy_challenge(domain, token_file, token):
+def deploy_challenge(domain: str, token_file: str, token: str):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
@@ -131,7 +131,7 @@ def deploy_challenge(domain, token_file, token):
 @click.argument("domain")
 @click.argument("token-file")
 @click.argument("token")
-def clean_challenge(domain, token_file, token):
+def clean_challenge(domain: str, token_file: str, token: str):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
