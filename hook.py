@@ -5,7 +5,6 @@
 from pathlib import Path
 from typing import Optional, Union
 
-import click
 import dns
 import typer
 from CloudFlare import CloudFlare
@@ -97,7 +96,7 @@ def _add_record(zone: str, name: str, content: str):
         _ = cloudflare.zones.dns_records.post(zone, data=record)
     except CloudFlareAPIError as e:
         # TODO: Fail with grace
-        click.echo(e, err=True)
+        typer.echo(e, err=True)
         exit(1)
 
 
@@ -114,7 +113,7 @@ def _remove_record(zone: str, name: str, content: str):
             _ = cloudflare.zones.dns_records.delete(zone, record["id"])
     except CloudFlareAPIError as e:
         # TODO: Fail with grace
-        click.echo(e, err=True)
+        typer.echo(e, err=True)
         exit(1)
 
 
