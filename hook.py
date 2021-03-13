@@ -69,7 +69,7 @@ def _dns_verify(name: str, content: Union[str, None]):
     return False
 
 
-def _add_record(zone, name, content):
+def _add_record(zone: str, name: str, content: str):
     record = {
         "name": name,
         "content": content,
@@ -86,7 +86,7 @@ def _add_record(zone, name, content):
         exit(1)
 
 
-def _remove_record(zone, name, content):
+def _remove_record(zone: str, name: str, content: str):
     params = {
         "name": name,
         "content": content,
@@ -103,7 +103,7 @@ def _remove_record(zone, name, content):
         exit(1)
 
 
-def _normalize_click_args(name):
+def _normalize_click_args(name: str):
     # This allows Click to accept arguments with underscores like the ones dehydrated uses.
     # Simply replaces underscores from input to hyphens before they go through Click's parser.
     # With this, arguments can be passed as foo-bar or foo_bar.
