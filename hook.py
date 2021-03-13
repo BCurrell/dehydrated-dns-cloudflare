@@ -2,10 +2,12 @@
 
 """
 """
-from typing import Union
+from pathlib import Path
+from typing import Optional, Union
 
 import click
 import dns
+import typer
 from CloudFlare import CloudFlare
 from CloudFlare.exceptions import CloudFlareAPIError
 from dns.resolver import NoAnswer, Resolver, NXDOMAIN
@@ -22,6 +24,16 @@ cloudflare = CloudFlare()
 resolver = Resolver()
 
 
+def _normalize_click_args(name: str):
+    # This allows Click to accept arguments with underscores like the ones dehydrated uses.
+    # Simply replaces underscores from input to hyphens before they go through Click's parser.
+    # With this, arguments can be passed as foo-bar or foo_bar.
+    return name.replace("_", "-")
+
+
+cli = typer.Typer(context_settings={"token_normalize_func": _normalize_click_args})
+
+
 def _get_zone_id(domain: str):
     tld, domain, subdomain = parse_tld(domain, fix_protocol=True)
 
@@ -35,7 +47,7 @@ def _get_zone_id(domain: str):
         zone = cloudflare.zones.get(params={"name": fld})[0]
     except CloudFlareAPIError as e:
         # TODO: Fail with grace
-        click.echo(e, err=True)
+        typer.echo(e, err=True)
         exit(1)
 
     return zone["id"], fld, subdomain
@@ -51,7 +63,7 @@ def _dns_lookup(name: str):
         yield None
     except DNSException as e:
         # TODO: Fail with grace
-        click.echo(e, err=True)
+        typer.echo(e, err=True)
         exit(1)
 
 
@@ -106,23 +118,8 @@ def _remove_record(zone: str, name: str, content: str):
         exit(1)
 
 
-def _normalize_click_args(name: str):
-    # This allows Click to accept arguments with underscores like the ones dehydrated uses.
-    # Simply replaces underscores from input to hyphens before they go through Click's parser.
-    # With this, arguments can be passed as foo-bar or foo_bar.
-    return name.replace("_", "-")
-
-
-@click.group(context_settings={"token_normalize_func": _normalize_click_args})
-def cli_main():
-    pass
-
-
-@cli_main.command()
-@click.argument("domain")
-@click.argument("token-file")
-@click.argument("token")
-def deploy_challenge(domain: str, token_file: str, token: str):
+@cli.command()
+def deploy_challenge(domain: str, token_file: Optional[Path], token: str):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
@@ -130,11 +127,8 @@ def deploy_challenge(domain: str, token_file: str, token: str):
     _dns_verify(domain, token)
 
 
-@cli_main.command()
-@click.argument("domain")
-@click.argument("token-file")
-@click.argument("token")
-def clean_challenge(domain: str, token_file: str, token: str):
+@cli.command()
+def clean_challenge(domain: str, token_file: Optional[Path], token: str):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
@@ -143,4 +137,4 @@ def clean_challenge(domain: str, token_file: str, token: str):
 
 
 if __name__ == "__main__":
-    cli_main()
+    cli()
