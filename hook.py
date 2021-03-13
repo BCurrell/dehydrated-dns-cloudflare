@@ -118,7 +118,7 @@ def _remove_record(zone: str, name: str, content: str):
 
 
 @cli.command()
-def deploy_challenge(domain: str, token_file: Optional[Path], token: str):
+def deploy_challenge(domain: str, token_file: Path, token: str):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
@@ -127,7 +127,7 @@ def deploy_challenge(domain: str, token_file: Optional[Path], token: str):
 
 
 @cli.command()
-def clean_challenge(domain: str, token_file: Optional[Path], token: str):
+def clean_challenge(domain: str, token_file: Path, token: str):
     domain = prefix + domain
     zone, fld, subdomain = _get_zone_id(domain)
 
