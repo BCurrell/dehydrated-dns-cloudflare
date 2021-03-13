@@ -5,6 +5,7 @@
 from typing import Union
 
 import click
+import dns
 from CloudFlare import CloudFlare
 from CloudFlare.exceptions import CloudFlareAPIError
 from dns.resolver import Resolver, NXDOMAIN
@@ -43,7 +44,7 @@ def _get_zone_id(domain: str):
 def _dns_lookup(name: str):
 
     try:
-        yield from [str(record) for record in resolver.resolve(name, "TXT")]
+        yield from [str(record) for record in resolver.resolve(name, rdtype=dns.rdatatype.TXT)]
     except NXDOMAIN:
         yield None
     except DNSException as e:
