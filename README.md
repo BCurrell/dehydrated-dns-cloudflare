@@ -13,7 +13,7 @@ You're welcome to use one of the existing (recommended) hooks, or you're welcome
 
 - dehydrated
 - python (3.6 or higher)
-- pipenv
+- poetry
 
 For the purposes of this "documentation", I'm assuming you already have these installed, or know how to install them.
 
@@ -33,7 +33,7 @@ If you prefer to use config files, read the dehydrated documentation and adjust 
 cd /etc/dehydrated/hooks/
 git clone https://github.com/BCurrell/dehydrated-dns-cloudflare.git dns-cloudflare
 cd dns-cloudflare
-pipenv install
+poetry install
 cp .env.sample .env
 nano .env
 ```
