@@ -116,25 +116,27 @@ def cli_main():
 
 
 @cli_main.command()
-@click.argument("name")
-@click.argument("content")
-def deploy_challenge(name, content):
-    name = prefix + name
-    zone, fld, subdomain = _get_zone_id(name)
+@click.argument("domain")
+@click.argument("token-file")
+@click.argument("token")
+def deploy_challenge(domain, token_file=None, token=None):
+    domain = prefix + domain
+    zone, fld, subdomain = _get_zone_id(domain)
 
-    _add_record(zone, name, content)
-    _dns_verify(name, content)
+    _add_record(zone, domain, token)
+    _dns_verify(domain, token)
 
 
 @cli_main.command()
-@click.argument("name")
-@click.argument("content")
-def clean_challenge(name, content):
-    name = prefix + name
-    zone, fld, subdomain = _get_zone_id(name)
+@click.argument("domain")
+@click.argument("token-file")
+@click.argument("token")
+def clean_challenge(domain, token_file=None, token=None):
+    domain = prefix + domain
+    zone, fld, subdomain = _get_zone_id(domain)
 
-    _remove_record(zone, name, content)
-    _dns_verify(name, None)
+    _remove_record(zone, domain, token)
+    _dns_verify(domain, None)
 
 
 if __name__ == "__main__":
