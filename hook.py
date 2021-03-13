@@ -13,6 +13,7 @@ from tld import parse_tld
 
 load_dotenv()
 
+
 prefix = "_acme-challenge."
 cloudflare = CloudFlare()
 
@@ -121,7 +122,6 @@ def deploy_challenge(name, content):
     name = prefix + name
     zone, fld, subdomain = _get_zone_id(name)
 
-    _remove_record(zone, name, content)
     _add_record(zone, name, content)
     _dns_verify(name, content)
 
