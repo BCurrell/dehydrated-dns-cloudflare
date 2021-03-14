@@ -10,7 +10,7 @@ cloudflare = "^2.8.15"
 python-dotenv = "^0.15.0"
 tld = "^0.12.5"
 dnspython = "^2.1.0"
-click = "^7.1.2"
+typer = "^0.3.2"
 
 [tool.poetry.dev-dependencies]
 
