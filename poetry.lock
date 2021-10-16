@@ -129,7 +129,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "tld"
-version = "0.12.5"
+version = "0.12.6"
 description = "Extract the top-level domain (TLD) from the URL given."
 category = "main"
 optional = false
@@ -137,24 +137,25 @@ python-versions = ">=2.7, <4"
 
 [[package]]
 name = "typer"
-version = "0.3.2"
+version = "0.4.0"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
 category = "main"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-click = ">=7.1.1,<7.2.0"
+click = ">=7.1.1,<9.0.0"
 
 [package.extras]
 test = ["pytest-xdist (>=1.32.0,<2.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "mypy (==0.782)", "black (>=19.10b0,<20.0b0)", "isort (>=5.0.6,<6.0.0)", "shellingham (>=1.3.0,<2.0.0)", "pytest (>=4.4.0,<5.4.0)", "pytest-cov (>=2.10.0,<3.0.0)", "coverage (>=5.2,<6.0)"]
 all = ["colorama (>=0.4.3,<0.5.0)", "shellingham (>=1.3.0,<2.0.0)"]
 dev = ["autoflake (>=1.3.1,<2.0.0)", "flake8 (>=3.8.3,<4.0.0)"]
 doc = ["mkdocs (>=1.1.2,<2.0.0)", "mkdocs-material (>=5.4.0,<6.0.0)", "markdown-include (>=0.5.1,<0.6.0)"]
+test = ["shellingham (>=1.3.0,<2.0.0)", "pytest (>=4.4.0,<5.4.0)", "pytest-cov (>=2.10.0,<3.0.0)", "coverage (>=5.2,<6.0)", "pytest-xdist (>=1.32.0,<2.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "mypy (==0.910)", "black (>=19.10b0,<20.0b0)", "isort (>=5.0.6,<6.0.0)"]
 
 [[package]]
 name = "urllib3"
-version = "1.26.4"
+version = "1.26.5"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
@@ -247,19 +248,19 @@ soupsieve = [
     {file = "soupsieve-2.2.1.tar.gz", hash = "sha256:052774848f448cf19c7e959adf5566904d525f33a3f8b6ba6f6f8f26ec7de0cc"},
 ]
 tld = [
-    {file = "tld-0.12.5-py27-none-any.whl", hash = "sha256:3266e6783825a795244a0ed225126735e8121859113b0a7fc830cc49f7bbdaff"},
-    {file = "tld-0.12.5-py35-none-any.whl", hash = "sha256:478d9b23157c7e3e2d07b0534da3b1e61a619291b6e3f52f5a3510e43acec7e9"},
-    {file = "tld-0.12.5-py36-none-any.whl", hash = "sha256:d5938730cdb9ce4b0feac4dc887d971f964dba873a74ad818f0f25c1571c6045"},
-    {file = "tld-0.12.5-py37-none-any.whl", hash = "sha256:1a69b2cd4053da5377a0b27e048e97871120abf9cd7a62ff270915d0c11369d6"},
-    {file = "tld-0.12.5-py38-none-any.whl", hash = "sha256:cf1b7af4c1d9c689ca81ea7cf3cae77d1bfd8aaa4c648b58f76a0b3d32e3f6e0"},
-    {file = "tld-0.12.5-py39-none-any.whl", hash = "sha256:5bd36b24aeb14e766ef1e5c01b96fe89043db44a579848f716ec03c40af50a6b"},
-    {file = "tld-0.12.5.tar.gz", hash = "sha256:1b63094d893657eadfd61e49580b4225ce958ca3b8013dbb9485372cde5a3434"},
+    {file = "tld-0.12.6-py27-none-any.whl", hash = "sha256:ef5b162d6fa295822dacd4fe4df1b62d8df2550795a97399a8905821b58d3702"},
+    {file = "tld-0.12.6-py35-none-any.whl", hash = "sha256:826bbe61dccc8d63144b51caef83e1373fbaac6f9ada46fca7846021f5d36fef"},
+    {file = "tld-0.12.6-py36-none-any.whl", hash = "sha256:843844e4256c943983d86366b5af3ac9cd1c9a0b6465f04d9f70e3b4c1a7989f"},
+    {file = "tld-0.12.6-py37-none-any.whl", hash = "sha256:a92ac6b84917e7d9e934434b8d37e9be534598f138fbb86b3c0d5426f2621890"},
+    {file = "tld-0.12.6-py38-none-any.whl", hash = "sha256:266106ad9035f54cd5cce5f823911a51f697e7c58cb45bfbd6c53b4c2976ece2"},
+    {file = "tld-0.12.6-py39-none-any.whl", hash = "sha256:b6650f2d5392a49760064bc55d73ce3397a378ef24ded96efb516c6b8ec68c26"},
+    {file = "tld-0.12.6.tar.gz", hash = "sha256:69fed19d26bb3f715366fb4af66fdeace896c55c052b00e8aaba3a7b63f3e7f0"},
 ]
 typer = [
-    {file = "typer-0.3.2-py3-none-any.whl", hash = "sha256:ba58b920ce851b12a2d790143009fa00ac1d05b3ff3257061ff69dbdfc3d161b"},
-    {file = "typer-0.3.2.tar.gz", hash = "sha256:5455d750122cff96745b0dec87368f56d023725a7ebc9d2e54dd23dc86816303"},
+    {file = "typer-0.4.0-py3-none-any.whl", hash = "sha256:d81169725140423d072df464cad1ff25ee154ef381aaf5b8225352ea187ca338"},
+    {file = "typer-0.4.0.tar.gz", hash = "sha256:63c3aeab0549750ffe40da79a1b524f60e08a2cbc3126c520ebf2eeaf507f5dd"},
 ]
 urllib3 = [
-    {file = "urllib3-1.26.4-py2.py3-none-any.whl", hash = "sha256:2f4da4594db7e1e110a944bb1b551fdf4e6c136ad42e4234131391e21eb5b0df"},
-    {file = "urllib3-1.26.4.tar.gz", hash = "sha256:e7b021f7241115872f92f43c6508082facffbd1c048e3c6e2bb9c2a157e28937"},
+    {file = "urllib3-1.26.5-py2.py3-none-any.whl", hash = "sha256:753a0374df26658f99d826cfe40394a686d05985786d946fbe4165b5148f5a7c"},
+    {file = "urllib3-1.26.5.tar.gz", hash = "sha256:a7acd0977125325f516bda9735fa7142b909a8d01e8b2e4c8108d0984e6e0098"},
 ]
