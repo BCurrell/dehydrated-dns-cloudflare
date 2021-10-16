@@ -7,7 +7,7 @@ authors = ["Brandon Currell"]
 [tool.poetry.dependencies]
 python = "^3.6"
 cloudflare = "^2.8.15"
-python-dotenv = "^0.17.0"
+python-dotenv = "^0.19.1"
 tld = "^0.12.6"
 dnspython = "^2.1.0"
 typer = "^0.4.0"
