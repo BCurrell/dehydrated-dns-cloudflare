@@ -8,7 +8,7 @@ authors = ["Brandon Currell"]
 python = "^3.6"
 cloudflare = "^2.8.15"
 python-dotenv = "^0.17.0"
-tld = "^0.12.5"
+tld = "^0.12.6"
 dnspython = "^2.1.0"
 typer = "^0.4.0"
 
