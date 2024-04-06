@@ -3,6 +3,7 @@ name = "dehydrated-dns-cloudflare"
 version = "0.1.0"
 description = ""
 authors = ["Brandon Currell"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.6"
