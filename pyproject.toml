@@ -6,12 +6,12 @@ authors = ["Brandon Currell"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.6"
-cloudflare = "^2.8.15"
-python-dotenv = "^0.19.1"
-tld = "^0.12.6"
-dnspython = "^2.1.0"
-typer = "^0.4.0"
+python = "^3.8"
+cloudflare = "^2.19.2"
+python-dotenv = "^1.0.1"
+tld = "^0.13"
+dnspython = "^2.6.1"
+typer = "^0.12.1"
 
 [tool.poetry.dev-dependencies]
 
