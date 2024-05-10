@@ -7,7 +7,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.8"
-cloudflare = "^2.19.2"
+cloudflare = "^2.20.0"
 python-dotenv = "^1.0.1"
 tld = "^0.13"
 dnspython = "^2.6.1"
